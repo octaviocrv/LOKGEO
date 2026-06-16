@@ -13,7 +13,7 @@
 export default function LocationSelection() {
   const [Location, setLoacations] = useState('Select Location')
   return (
-    <Menu as='div' className='fixed w-full h-full flex xl:flex-row'>
+    <Menu as='div' className='relative w-full flex xl:flex-row'>
       <div className=" relative flex-1">
         <Menu.Button className='dropdown-btn w-full h-full flex flex-col justify-center items-center xl:items-start xl:pl-8'>
           

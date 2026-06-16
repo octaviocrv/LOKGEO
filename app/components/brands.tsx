@@ -1,36 +1,82 @@
 'use client'
-import{ motion} from 'framer-motion'
-import {fadeIn} from '../../varients'
-import  Image  from "next/image"
+
+import { motion } from 'framer-motion'
+import { FaWhatsapp } from 'react-icons/fa'
+import { fadeIn } from '../../varients'
+import Image from "next/image"
+
+// Array de marcas: Facilita a manutenção e deixa o código limpo (Padrão Expert)
+const brands = [
+  { src: '/icons/brands/1.svg', alt: 'Marca 1' },
+  { src: '/icons/brands/2.svg', alt: 'Marca 2' },
+  { src: '/icons/brands/3.svg', alt: 'Marca 3' },
+  { src: '/icons/brands/4.svg', alt: 'Marca 4' },
+  { src: '/icons/brands/5.svg', alt: 'Marca 5' },
+  { src: '/icons/brands/6.svg', alt: 'Marca 6' },
+]
+
 export default function Brands() {
   return (
-   <section className='xl:pt-16 xl:h-[200px] bg-white flex flex-col justify-center'>
-      <div className="container mx-auto">
-        <div className='grid grid-cols-3 gap-6 place-items-center xl:flex xl:flex-wrap xl:gap-x-6 xl:justify-between'>
-          <div>
-            <Image src={'icons/brands/ford.svg'} width= {85} height={32} alt='' />
-          </div>
-          <div>
-            <Image src={'icons/brands/mercedes.svg'} width= {60} height={60} alt='' />
-          </div>
-          <div>
-            <Image src={'icons/brands/audi.svg'} width= {85} height={58} alt='' />
-          </div>
-          <div>
-            <Image src={'icons/brands/bmw.svg'} width= {68} height={68} alt='' />
-          </div>
-          <div>
-            <Image src={'icons/brands/vw.svg'} width= {68} height={68} alt='' />
-          </div>
-          <div>
-            <Image src={'icons/brands/skoda.svg'} width= {60} height={60} alt='' />
-          </div>
-          <div>
-          <Image src={'icons/brands/mazda.svg'} width= {62} height={50} alt='' />
-          </div>
-        </div>
+    // Adicionado border-y e um padding responsivo para dar um respiro elegante
+    <section className='py-12 xl:py-16 bg-white border-y border-gray-100 flex flex-col justify-center overflow-hidden'>
+      <div className="container mx-auto px-4">
+        
+        {/* Título sutil para ancorar a seção */}
+        <motion.p
+          variants={fadeIn('up', 0.2)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.6 }}
+          className="text-center text-xs md:text-sm font-bold text-gray-400 uppercase tracking-[4px] mb-8 xl:mb-10"
+        >
+          Trabalhamos com as melhores marcas
+        </motion.p>
+
+        {/* Grid de Marcas com animação */}
+        <motion.div 
+          variants={fadeIn('up', 0.4)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.6 }}
+          // Ajustado para grid-cols-2 no mobile (para não esmagar os logos) e flex no desktop
+          className='grid grid-cols-2 md:grid-cols-3 xl:flex xl:flex-wrap gap-8 xl:gap-16 justify-center items-center'
+        >
+          {brands.map((brand, index) => (
+            <div 
+              key={index} 
+              // EFEITO PREMIUM: Opacidade reduzida + escala de cinza que volta ao normal no hover
+              className="flex justify-center items-center opacity-50 hover:opacity-100 grayscale hover:grayscale-0 hover:scale-110 transition-all duration-300 cursor-pointer"
+            >
+              <Image 
+                src={brand.src} 
+                width={80} // Tamanho levemente aumentado para melhor leitura
+                height={80} 
+                alt={brand.alt} 
+                className="object-contain"
+              />
+            </div>
+          ))}
+        </motion.div>
+
+        <motion.div
+          variants={fadeIn('up', 0.6)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.6 }}
+          className="mt-10 flex justify-center"
+        >
+          <a
+            href="https://wa.me/5531995669772"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-brand-gradient w-full max-w-[280px] h-14 rounded-xl text-sm shadow-md hover:shadow-lg flex justify-center items-center gap-2 font-bold text-white uppercase tracking-wider"
+          >
+            <FaWhatsapp className="text-lg" />
+            Solicitar cotação
+          </a>
+        </motion.div>
 
       </div>
-   </section>
+    </section>
   )
 }

@@ -3,50 +3,86 @@
 @tailwind utilities;
 
 @layer base {
-  body{
-    @apply text-primary bg-body;
+  /* --- TIPOGRAFIA E FUNDOS --- */
+  body {
+    @apply text-primary bg-body antialiased; /* antialiased deixa as fontes mais suaves e modernas no Chrome/Safari */
   }
 
-  p{
+  p {
     @apply text-secondary;
   }
-  .h1{
-    @apply text-4xl xl:text-[64px] text-primary xl:leading-[72px] font-extrabold mb-[18px]
+
+  .h1 {
+    @apply text-4xl xl:text-[64px] text-primary xl:leading-[72px] font-extrabold mb-[18px];
   }
-  .h2{
-    @apply text-4xl mb-6 font-bold  ;
+
+  .h2 {
+    @apply text-4xl mb-6 font-bold text-primary; /* Garante que os H2 também respeitem a cor principal escura */
   }
-  .h3{
-    @apply text-xl mb-4 font-semibold
+
+  .h3 {
+    @apply text-xl mb-4 font-semibold text-primary; /* Garante consistência na cor dos H3 */
   }
-  .description{
-    @apply text-base xl:text-xl xl:leading-8
+
+  .description {
+    @apply text-base xl:text-xl xl:leading-8;
   }
-  .section{
-    @apply w-full h-screen pt-[60px] xl:pt-[128px]
+
+  .section {
+    @apply w-full py-16 xl:py-24;
   }
-  .btn{
-    @apply rounded-[18px] w-full uppercase font-medium text-white tracking-[2px] text-[13px] flex justify-center items-center transition-all duration-300 
+
+  /* Compensa o header fixo ao navegar via âncoras, evitando que o topo
+     da seção fique escondido atrás do cabeçalho */
+  section[id] {
+    @apply scroll-mt-24 xl:scroll-mt-28;
   }
-  .btn-sm{
+
+  /* --- CLASSES DE DESTAQUE LOKGEO (NOVAS) --- */
+  
+  /* Use esta classe em spans dentro do seu H1 para dar destaque a palavras-chave usando as duas cores da logo */
+  .text-brand-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-brand;
+  }
+
+  .active {
+    @apply text-accent font-semibold; /* Alterado para dar um peso extra quando o link de navegação estiver ativo */
+  }
+
+  /* --- BOTÕES --- */
+  .btn {
+    /* Reduzi um pouco o arredondamento (de 18px para 8px) e ajustei o espaçamento de letras. 
+       Isso dá um ar mais sério, "tech" e moderno, fugindo de botões muito redondos que parecem antigos. */
+    @apply rounded-[8px] w-full uppercase font-bold text-white tracking-[1px] text-[14px] flex justify-center items-center transition-all duration-300;
+  }
+
+  .btn-sm {
     @apply h-14;
   }
-  .btn-lg{
+
+  .btn-lg {
     @apply h-16;
   }
-  .btn-cta{
-    @apply bg-primary h-[54px] rounded-[5px] px-4 transition-all duration-300;
+
+  .btn-cta {
+    @apply bg-primary hover:bg-opacity-90 text-white h-[54px] rounded-[5px] px-8 transition-all duration-300;
   }
-  .btn-primary{
-    @apply bg-primary  
+
+  .btn-primary {
+    @apply bg-primary hover:bg-opacity-90;
   }
-  .btn-secondary{
-    @apply bg-secondary  
+
+  .btn-secondary {
+    @apply bg-secondary hover:bg-opacity-90;
   }
-  .btn-accent{
-    @apply bg-accent  hover:bg-accent-hover
+
+  /* Botão usando o Vermelho da marca. Adicionada uma leve sombra que aumenta no hover para efeito de profundidade. */
+  .btn-accent {
+    @apply bg-accent hover:bg-accent-hover shadow-md hover:shadow-lg;
   }
-  .active{
-    @apply  text-accent
+
+  /* NOVO: Botão principal da Landing Page usando o gradiente Laranja/Vermelho que configuramos */
+  .btn-brand-gradient {
+    @apply bg-gradient-brand hover:opacity-90 shadow-md hover:shadow-lg;
   }
 }
