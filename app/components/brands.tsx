@@ -26,7 +26,7 @@ export default function Brands() {
           variants={fadeIn('up', 0.2)}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.6 }}
+          viewport={{ once: true, amount: 0.2 }}
           className="text-center text-xs md:text-sm font-bold text-gray-400 uppercase tracking-[4px] mb-8 xl:mb-10"
         >
           Trabalhamos com as melhores marcas
@@ -37,7 +37,7 @@ export default function Brands() {
           variants={fadeIn('up', 0.4)}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.6 }}
+          viewport={{ once: true, amount: 0.2 }}
           // Ajustado para grid-cols-2 no mobile (para não esmagar os logos) e flex no desktop
           className='grid grid-cols-2 md:grid-cols-3 xl:flex xl:flex-wrap gap-8 xl:gap-16 justify-center items-center'
         >
@@ -62,7 +62,7 @@ export default function Brands() {
           variants={fadeIn('up', 0.6)}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.6 }}
+          viewport={{ once: true, amount: 0.2 }}
           className="mt-10 flex justify-center"
         >
           <a

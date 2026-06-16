@@ -1,10 +1,10 @@
 export const fadeIn = (direction, delay)=>{
     return{
         hidden:{
-            y: direction === 'up' ? 80 : direction === 'down'? -80 : 0,
+            y: direction === 'up' ? 30 : direction === 'down'? -30 : 0,
             opacity : 0,
 
-            x:direction === 'left' ? 80 : direction === 'right'? -80 : 0,
+            x:direction === 'left' ? 30 : direction === 'right'? -30 : 0,
             opacity : 0,
         },
         show : {
@@ -13,7 +13,7 @@ export const fadeIn = (direction, delay)=>{
             opacity :1,
             transition :{
                 type: 'tween',
-                duration : 1.2,
+                duration : 0.6,
                 delay:delay,
                 ease: [0.25, 0.25, 0.25, 0.75]
             }

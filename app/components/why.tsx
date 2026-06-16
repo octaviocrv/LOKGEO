@@ -17,7 +17,7 @@ export default function Why() {
           variants={fadeIn('up', 0.2)}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.4 }} // once: true evita que fique piscando ao rolar a página
+          viewport={{ once: true, amount: 0.2 }} // once: true evita que fique piscando ao rolar a página
           className="text-center mb-12 xl:mb-16"
         >
           <h2 className="text-3xl xl:text-5xl font-bold text-primary mb-6">
@@ -34,10 +34,10 @@ export default function Why() {
           variants={fadeIn('up', 0.4)}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.4 }}
+          viewport={{ once: true, amount: 0.2 }}
           className="hidden md:flex justify-center mb-16 xl:mb-20"
         >
-          <div className="relative w-full max-w-[1060px] h-[420px] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-gray-900/5">
+          <div className="relative w-full max-w-[1060px] h-[26.25rem] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-gray-900/5">
             <Image
               src={'/images/why/familiafeliz.jpg'}
               fill

@@ -25,7 +25,7 @@ const About = () => {
                         variants={fadeIn('right', 0.2)}
                         initial="hidden"
                         whileInView="show"
-                        viewport={{ once: true, amount: 0.4 }}
+                        viewport={{ once: true, amount: 0.2 }}
                         className="flex-1 w-full relative"
                     >
                         <div className="absolute -inset-2 bg-gradient-brand opacity-20 rounded-3xl blur-md"></div>
@@ -48,7 +48,7 @@ const About = () => {
                             variants={fadeIn('left', 0.4)}
                             initial="hidden"
                             whileInView="show"
-                            viewport={{ once: true, amount: 0.4 }}
+                            viewport={{ once: true, amount: 0.2 }}
                             className="w-full max-w-[550px]"
                         >
                             <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-primary mb-6 leading-tight">

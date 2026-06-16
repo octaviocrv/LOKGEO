@@ -13,7 +13,7 @@
   }
 
   .h1 {
-    @apply text-4xl xl:text-[64px] text-primary xl:leading-[72px] font-extrabold mb-[18px];
+    @apply text-4xl xl:text-[4rem] text-primary xl:leading-[4.5rem] font-extrabold mb-[18px];
   }
 
   .h2 {
@@ -53,7 +53,7 @@
   .btn {
     /* Reduzi um pouco o arredondamento (de 18px para 8px) e ajustei o espaçamento de letras. 
        Isso dá um ar mais sério, "tech" e moderno, fugindo de botões muito redondos que parecem antigos. */
-    @apply rounded-[8px] w-full uppercase font-bold text-white tracking-[1px] text-[14px] flex justify-center items-center transition-all duration-300;
+    @apply rounded-[8px] w-full uppercase font-bold text-white tracking-[1px] text-[0.875rem] flex justify-center items-center transition-all duration-300;
   }
 
   .btn-sm {
@@ -86,3 +86,35 @@
     @apply bg-gradient-brand hover:opacity-90 shadow-md hover:shadow-lg;
   }
 }
+
+/* ============================================================
+   ESCALA RESPONSIVA GLOBAL (notebooks / telas médias)
+   ------------------------------------------------------------
+   O layout desktop (breakpoint xl, a partir de 1280px) foi
+   desenhado tendo como referência monitores grandes (~1920px).
+   Em telas de notebook esse mesmo layout fica "ampliado".
+
+   Como quase todos os tamanhos do Tailwind (espaçamentos, fontes,
+   gaps) usam REM, basta reduzir a fonte-raiz (html) para encolher
+   a página inteira de forma proporcional — equivale a aplicar um
+   "zoom out" sem quebrar o layout.
+
+   Para ajustar: aumente/diminua os valores de font-size abaixo.
+   100% = 16px (tamanho cheio) · 75% = 12px · etc.
+   ============================================================ */
+
+/* Notebooks comuns (1366, 1440...) */
+@media (min-width: 1280px) and (max-width: 1535px) {
+  html {
+    font-size: 75%; /* ~12px de base */
+  }
+}
+
+/* Telas médias/grandes (1536, 1600...) — redução mais leve */
+@media (min-width: 1536px) and (max-width: 1727px) {
+  html {
+    font-size: 85%; /* ~13.6px de base */
+  }
+}
+
+/* Monitores grandes (>= 1728px) mantêm a escala cheia (100%) */

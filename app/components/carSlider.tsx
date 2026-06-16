@@ -78,7 +78,7 @@ export default function CarSlider() {
               <div className='bg-white rounded-3xl border border-gray-100 shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col h-full group'>
 
                 {/* ÁREA DA IMAGEM */}
-                <div className='w-full h-[220px] sm:h-[260px] md:h-[300px] lg:h-[340px] xl:h-[380px] bg-gray-50 flex justify-center items-center relative overflow-hidden'>
+                <div className='w-full h-[220px] sm:h-[260px] md:h-[18.75rem] lg:h-[21.25rem] xl:h-[23.75rem] bg-gray-50 flex justify-center items-center relative overflow-hidden'>
                   <Image
                     src={car.image}
                     fill

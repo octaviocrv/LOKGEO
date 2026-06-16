@@ -28,8 +28,8 @@ export default function Hero() {
               variants={fadeIn('down', 0.2)}
               initial="hidden"
               whileInView="show"
-              viewport={{ once: true, amount: 0.6 }}
-              className="text-4xl md:text-5xl xl:text-[64px] font-extrabold text-primary leading-tight xl:leading-[72px] mb-6"
+              viewport={{ once: true, amount: 0.2 }}
+              className="text-4xl md:text-5xl xl:text-[4rem] font-extrabold text-primary leading-tight xl:leading-[4.5rem] mb-6"
             >
               Alugue com confiança,<br />
               <span className="text-brand-gradient">dirija com tranquilidade</span>
@@ -40,7 +40,7 @@ export default function Hero() {
               variants={fadeIn('down', 0.4)}
               initial="hidden"
               whileInView="show"
-              viewport={{ once: true, amount: 0.6 }}
+              viewport={{ once: true, amount: 0.2 }}
               className="max-w-[500px] mx-auto xl:mx-0 mb-10 flex flex-col items-center xl:items-start"
             >
               <p className="text-base md:text-lg xl:text-xl text-secondary leading-relaxed mb-5">
@@ -63,14 +63,14 @@ export default function Hero() {
               variants={fadeIn('down', 0.6)}
               initial="hidden"
               whileInView="show"
-              viewport={{ once: true, amount: 0.6 }}
+              viewport={{ once: true, amount: 0.2 }}
               className="flex flex-col sm:flex-row gap-4 justify-center xl:justify-start"
             >
               <a
                 href="https://wa.me/5531995669772"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-brand-gradient px-8 py-4 h-14 rounded-xl text-sm md:text-base font-bold shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all flex items-center justify-center gap-2"
+                className="btn btn-brand-gradient px-8 py-4 h-14 rounded-xl text-sm md:text-base font-bold shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all flex items-center justify-center gap-2 whitespace-nowrap"
               >
                 <FaWhatsapp className="text-lg" />
                 Solicitar cotação
@@ -78,7 +78,7 @@ export default function Hero() {
 
               <a
                 href="#cars"
-                className="btn px-8 py-4 h-14 rounded-xl text-sm md:text-base font-bold text-primary bg-white border-2 border-gray-200 hover:border-accent hover:text-accent shadow-sm hover:shadow-md transition-all flex items-center justify-center"
+                className="btn px-8 py-4 h-14 rounded-xl text-sm md:text-base font-bold text-primary bg-white border-2 border-gray-200 hover:border-accent hover:text-accent shadow-sm hover:shadow-md transition-all flex items-center justify-center whitespace-nowrap"
               >
                 Ver categorias
               </a>
@@ -90,8 +90,8 @@ export default function Hero() {
             variants={fadeIn('up', 0.6)}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: 0.6 }}
-            className="relative w-full xl:w-[55%] h-[350px] md:h-[500px] xl:h-[700px] mt-10 xl:mt-0 flex justify-center items-center z-0"
+            viewport={{ once: true, amount: 0.2 }}
+            className="relative w-full xl:w-[55%] h-[350px] md:h-[31.25rem] xl:h-[43.75rem] mt-10 xl:mt-0 flex justify-center items-center z-0"
           >
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] md:w-[400px] xl:w-[550px] h-[250px] md:h-[400px] xl:h-[550px] bg-accent/5 rounded-full blur-3xl -z-10"></div>
 
