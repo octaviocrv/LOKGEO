@@ -4,98 +4,226 @@ import React from 'react'
 import Image from "next/image"
 import { motion } from 'framer-motion'
 import { fadeIn } from '../../varients'
-import { MdHandshake, MdKey, MdTrendingUp } from 'react-icons/md'
+import { MdHandshake, MdKey, MdTrendingUp, MdArrowForward } from 'react-icons/md'
+
+// IMPORTAÇÕES DO SWIPER
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import 'swiper/css/effect-fade'
+import 'swiper/css/pagination'
+import { Autoplay, EffectFade, Pagination } from 'swiper/modules'
+
+const timelineSteps = [
+  {
+    title: "Escolha",
+    desc: "Entre em contato pelos nossos canais rápidos e escolha a melhor categoria.",
+    icon: <MdKey className="text-3xl" />
+  },
+  {
+    title: "Cadastro",
+    desc: "Envie sua CNH e comprovante via WhatsApp para aprovação simplificada.",
+    icon: <MdHandshake className="text-3xl" />
+  },
+  {
+    title: "Retirada",
+    desc: "Retire na nossa unidade no Bairro Amazonas de maneira muito dinâmica.",
+    icon: <MdKey className="text-3xl" />
+  },
+  {
+    title: "Viagem",
+    desc: "Aproveite ao máximo sabendo que tem suporte premium 24 horas por dia.",
+    icon: <MdTrendingUp className="text-3xl" />
+  }
+];
 
 export default function Why() {
   return (
-    // Espaçamento padronizado para dar respiro à página
-    <section className="py-16 sm:py-24 xl:py-28 bg-white" id="why">
+    <section className="py-16 sm:py-24 xl:py-28 bg-white overflow-hidden" id="why">
       <div className="container mx-auto px-4">
         
-        {/* CABEÇALHO DA SEÇÃO */}
-        <motion.div
-          variants={fadeIn('up', 0.2)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }} // once: true evita que fique piscando ao rolar a página
-          className="text-center mb-12 xl:mb-16"
+        <Swiper
+          modules={[Autoplay, EffectFade, Pagination]}
+          effect="fade"
+          fadeEffect={{ crossFade: true }}
+          speed={800}
+          autoplay={{ 
+            delay: 7000,
+            disableOnInteraction: false 
+          }}
+          pagination={{
+            clickable: true,
+            el: '.why-pagination',
+            bulletClass: 'why-bullet',
+            bulletActiveClass: 'why-bullet-active',
+          }}
+          className="w-full"
         >
-          <h2 className="text-3xl xl:text-5xl font-bold text-primary mb-6">
-            Segurança e conforto para a sua <span className="text-accent">família</span>
-          </h2>
-          <p className="text-secondary text-base xl:text-lg max-w-[700px] mx-auto leading-relaxed">
-            Carros revisados, limpos e prontos para a estrada. Aqui você aluga com
-            tranquilidade e leva quem você ama com toda a segurança que sua viagem merece.
-          </p>
-        </motion.div>
 
-        {/* IMAGEM DE DESTAQUE */}
-        <motion.div
-          variants={fadeIn('up', 0.4)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-          className="hidden md:flex justify-center mb-16 xl:mb-20"
-        >
-          <div className="relative w-full max-w-[1060px] h-[26.25rem] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-gray-900/5">
-            <Image
-              src={'/images/why/familiafeliz.jpg'}
-              fill
-              style={{ objectFit: 'cover' }}
-              alt="Família viajando com tranquilidade em carro alugado na Lokgeo"
-            />
-          </div>
-        </motion.div>
+          {/* SLIDE 1: MANTIDO ORIGINAL */}
+          <SwiperSlide>
+            <div className="pb-8">
+              <motion.div
+                variants={fadeIn('up', 0.2)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.2 }}
+                className="text-center mb-12 xl:mb-16"
+              >
+                <h2 className="text-3xl xl:text-5xl font-bold text-primary mb-6">
+                  Por que rodar com a <span className="text-accent">Lokgeo</span>?
+                </h2>
+                <p className="text-secondary text-base xl:text-lg max-w-[700px] mx-auto leading-relaxed">
+                  Mais do que uma locação, entregamos tranquilidade em cada quilômetro. Conte com atendimento especializado, frota revisada e um processo rápido, seguro e sem burocracia.
+                </p>
+                <div className="mt-8">
+                  <a
+                    href="https://wa.me/5531995669772"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-[#25D366] to-[#128C7E] px-8 py-4 text-sm sm:text-base font-bold text-white shadow-[0_12px_32px_-12px_rgba(37,211,102,0.75)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_-10px_rgba(37,211,102,0.8)]"
+                  >
+                    Falar no WhatsApp
+                  </a>
+                </div>
+              </motion.div>
 
-        {/* GRID DE DIFERENCIAIS (Transformados em Cards Modernos) */}
-        <motion.div
-          variants={fadeIn('up', 0.6)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-          // Ajustado para grid verdadeiro ao invés de flex, mantendo os cards todos com a mesma altura
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 xl:gap-[30px]"
-        >
-          {/* Card 1 */}
-          <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
-            {/* Ícone com fundo suave */}
-            <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-accent transition-colors duration-300">
-              <MdKey className="text-4xl text-accent group-hover:text-white transition-colors duration-300" />
+              <motion.div
+                variants={fadeIn('up', 0.4)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.2 }}
+                className="hidden md:flex justify-center mb-16 xl:mb-20"
+              >
+                <div className="relative w-full max-w-[1060px] h-[26.25rem] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-gray-900/5">
+                  <Image
+                    src='https://images.unsplash.com/photo-1650831433364-3bbd0f2d2f01?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    alt="Família viajando com tranquilidade"
+                  />
+                </div>
+              </motion.div>
+
+              <motion.div
+                variants={fadeIn('up', 0.6)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.2 }}
+                className="grid grid-cols-1 md:grid-cols-3 gap-6 xl:gap-[30px]"
+              >
+                <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                  <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-accent transition-colors duration-300">
+                    <MdKey className="text-4xl text-accent group-hover:text-white transition-colors duration-300" />
+                  </div>
+                  <h3 className="text-xl font-bold text-primary mb-4">Aluguel simples e rápido</h3>
+                  <p className="text-secondary leading-relaxed">Reserva descomplicada pelo WhatsApp e retirada ágil.</p>
+                </div>
+                <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                  <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-accent transition-colors duration-300">
+                    <MdTrendingUp className="text-4xl text-accent group-hover:text-white transition-colors duration-300" />
+                  </div>
+                  <h3 className="text-xl font-bold text-primary mb-4">Veículos novos e revisados</h3>
+                  <p className="text-secondary leading-relaxed">Frota moderna e com manutenção em dia.</p>
+                </div>
+                <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                  <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-accent transition-colors duration-300">
+                    <MdHandshake className="text-4xl text-accent group-hover:text-white transition-colors duration-300" />
+                  </div>
+                  <h3 className="text-xl font-bold text-primary mb-4">Atendimento flexível</h3>
+                  <p className="text-secondary leading-relaxed">Você fala direto com a gente, sem call center.</p>
+                </div>
+              </motion.div>
             </div>
-            <h3 className="text-xl font-bold text-primary mb-4">Aluguel simples e rápido</h3>
-            {/* Texto agora sempre visível */}
-            <p className="text-secondary leading-relaxed">
-              Reserva descomplicada pelo WhatsApp e retirada ágil. Menos burocracia,
-              mais tempo com a sua família.
-            </p>
-          </div>
+          </SwiperSlide>
 
-          {/* Card 2 */}
-          <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
-            <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-accent transition-colors duration-300">
-              <MdTrendingUp className="text-4xl text-accent group-hover:text-white transition-colors duration-300" />
-            </div>
-            <h3 className="text-xl font-bold text-primary mb-4">Veículos novos e revisados</h3>
-            <p className="text-secondary leading-relaxed">
-              Frota moderna e com manutenção em dia, para você viajar com a
-              segurança e o conforto que a sua família precisa.
-            </p>
-          </div>
+          {/* SLIDE 2: TIMELINE COM DESTAQUE (VIBRANTE) */}
+          <SwiperSlide>
+            <div className="pb-20 flex flex-col items-center justify-start min-h-[600px] xl:min-h-[800px] w-full">
+              
+              <div className="flex flex-col mb-16 xl:mb-24 w-full max-w-6xl text-center md:text-left">
+                <div className="flex flex-col md:flex-row justify-between items-center md:items-start w-full mb-8 gap-4">
+                  <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-xs font-bold uppercase tracking-[0.2em]">
+                    Passo a Passo
+                  </span>
+                </div>
+                <h2 className="text-4xl md:text-5xl xl:text-6xl font-black text-primary leading-tight">
+                  Da escolha do veículo à <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF914D] to-[#FA1F1F]">
+                    entrega das chaves
+                  </span>
+                </h2>
+              </div>
 
-          {/* Card 3 */}
-          <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
-            <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-accent transition-colors duration-300">
-              <MdHandshake className="text-4xl text-accent group-hover:text-white transition-colors duration-300" />
+              {/* TIMELINE DESIGN REFORÇADO */}
+              <div className="relative w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 md:gap-6 mt-12">
+                
+                {/* Linha de Conexão Vibrante (Desktop) */}
+                <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-[#FF914D]/20 via-[#FA1F1F]/40 to-[#FF914D]/20 z-0"></div>
+
+                {timelineSteps.map((step, index) => (
+                  <motion.div 
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.2 }}
+                    className="relative z-10 flex flex-col items-center md:items-start md:w-1/4 w-full group"
+                  >
+                    {/* Número do Passo com Destaque */}
+                    <div className="relative mb-8">
+                      <div className="w-24 h-24 rounded-[2rem] bg-white shadow-[0_20px_40px_rgba(0,0,0,0.08)] border border-gray-100 flex items-center justify-center transition-all duration-500 group-hover:bg-gradient-to-br group-hover:from-[#FF914D] group-hover:to-[#FA1F1F] group-hover:rotate-6 group-hover:shadow-[0_20px_40px_rgba(250,31,31,0.3)]">
+                        <span className="text-4xl font-black text-primary group-hover:text-white transition-colors">0{index + 1}</span>
+                      </div>
+                      {/* Seta de Conexão (Mobile) */}
+                      {index !== timelineSteps.length - 1 && (
+                        <div className="md:hidden absolute -bottom-10 left-1/2 -translate-x-1/2 text-accent/30 animate-bounce">
+                          <MdArrowForward className="text-3xl rotate-90" />
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Conteúdo do Card */}
+                    <div className="text-center md:text-left">
+                      <h4 className="text-2xl font-black text-primary mb-4 group-hover:text-accent transition-colors">{step.title}</h4>
+                      <div className="w-12 h-1 bg-accent/20 mb-4 rounded-full group-hover:w-full group-hover:bg-accent/40 transition-all duration-500" />
+                      <p className="text-secondary text-lg leading-relaxed font-medium">
+                        {step.desc}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
             </div>
-            <h3 className="text-xl font-bold text-primary mb-4">Atendimento flexível</h3>
-            <p className="text-secondary leading-relaxed">
-              Você fala direto com a gente, sem call center. Atendimento humano
-              para resolver o que você precisar, na hora.
-            </p>
-          </div>
-        </motion.div>
+          </SwiperSlide>
+
+        </Swiper>
+
+        <div className="why-pagination w-full flex justify-center mt-6"></div>
 
       </div>
+
+      <style jsx global>{`
+        .why-pagination {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 12px;
+        }
+        .why-bullet {
+          width: 12px;
+          height: 12px;
+          background-color: #e2e8f0;
+          border-radius: 50%;
+          cursor: pointer;
+          transition: all 0.4s ease;
+        }
+        .why-bullet-active {
+          background-color: #fa1f1f;
+          width: 40px;
+          border-radius: 20px;
+          box-shadow: 0 4px 10px rgba(250, 31, 31, 0.3);
+        }
+      `}</style>
     </section>
   )
 }

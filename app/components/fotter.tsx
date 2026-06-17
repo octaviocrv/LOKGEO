@@ -87,16 +87,7 @@ export default function Footer() {
             <p className="text-white/70 text-sm mb-4 leading-relaxed">
               Receba sua cotação no WhatsApp com atendimento rápido, humano e sem burocracia.
             </p>
-            <a
-              href="https://wa.me/5531995669772"
-              target="_blank"
-              rel="noopener noreferrer"
-              // Botão ligeiramente mais fino (h-12 em vez de h-14) para acompanhar o layout compacto
-              className="btn btn-brand-gradient w-full h-12 rounded-xl flex items-center justify-center gap-2 font-bold shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all text-sm uppercase tracking-wider text-white"
-            >
-              <FaWhatsapp className="text-xl" />
-              Solicitar Cotação
-            </a>
+
           </div>
         </div>
 

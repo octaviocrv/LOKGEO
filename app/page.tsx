@@ -1,5 +1,6 @@
 import Header from "./components/header"
 import Hero from "./components/hero"
+// import ContactCards from "./components/contactCards"
 import Cars from "./components/cars"
 import About from "./components/about"
 import Why from "./components/why"
@@ -12,6 +13,7 @@ export default function Home() {
     <main className="max-w-[1920px] bg-white mx-auto relative overflow-hidden">
     <Header />
     <Hero />
+    {/* <ContactCards /> */}
     <Cars />
     <About />
     <Why />
