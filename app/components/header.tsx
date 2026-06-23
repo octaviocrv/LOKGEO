@@ -38,8 +38,8 @@ export default function Header() {
     >
       <div className="container mx-auto px-6 xl:px-12 flex justify-between items-center w-full max-w-[1920px]">
         
-        {/* LADO ESQUERDO: LOGO COM EFEITO DE ESCALA */}
-        <Link to="home" smooth={desktopMode} spy={true} className="cursor-pointer flex-shrink-0 group">
+        {/* LADO ESQUERDO: LOGO */}
+        <Link to="home" smooth={desktopMode} spy={true} className="cursor-pointer flex-shrink-0">
           <div className="relative">
             <Image
               src="/icons/logo lokgeo 1 (1).svg"
@@ -47,12 +47,8 @@ export default function Header() {
               height={64}
               alt="Lokgeo Locação de Veículos"
               priority
-              className={`transition-all duration-500 group-hover:scale-110 ${header ? 'brightness-0' : 'brightness-100'}`}
+              className="transition-all duration-300"
             />
-            {/* Brilho sutil atrás da logo quando no topo */}
-            {!header && (
-              <div className="absolute inset-0 bg-white/20 blur-2xl -z-10 rounded-full scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            )}
           </div>
         </Link>
 

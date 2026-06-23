@@ -18,7 +18,7 @@ const brands = [
 export default function Brands() {
   return (
     // Adicionado border-y e um padding responsivo para dar um respiro elegante
-    <section className='py-12 xl:py-16 bg-white border-y border-gray-100 flex flex-col justify-center overflow-hidden'>
+    <section className='py-12 xl:py-16 bg-orange-50 border-y border-gray-100 flex flex-col justify-center overflow-hidden'>
       <div className="container mx-auto px-4">
         
         {/* Título sutil para ancorar a seção */}

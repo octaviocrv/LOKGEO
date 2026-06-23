@@ -5,7 +5,7 @@ import Image from "next/image"
 import { motion } from 'framer-motion'
 import { fadeIn } from '../../varients'
 import { MdHandshake, MdKey, MdTrendingUp, MdArrowForward } from 'react-icons/md'
-
+import { LuTarget, LuEye, LuShieldCheck } from 'react-icons/lu'
 // IMPORTAÇÕES DO SWIPER
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
@@ -38,17 +38,17 @@ const timelineSteps = [
 
 export default function Why() {
   return (
-    <section className="py-16 sm:py-24 xl:py-28 bg-white overflow-hidden" id="why">
+    <section className="py-16 sm:py-24 xl:py-28 bg-orange-50 overflow-hidden" id="why">
       <div className="container mx-auto px-4">
-        
+
         <Swiper
           modules={[Autoplay, EffectFade, Pagination]}
           effect="fade"
           fadeEffect={{ crossFade: true }}
           speed={800}
-          autoplay={{ 
+          autoplay={{
             delay: 7000,
-            disableOnInteraction: false 
+            disableOnInteraction: false
           }}
           pagination={{
             clickable: true,
@@ -96,7 +96,7 @@ export default function Why() {
               >
                 <div className="relative w-full max-w-[1060px] h-[26.25rem] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-gray-900/5">
                   <Image
-                    src='https://images.unsplash.com/photo-1650831433364-3bbd0f2d2f01?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                    src="https://images.unsplash.com/photo-1650831433364-3bbd0f2d2f01?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     fill
                     style={{ objectFit: 'cover' }}
                     alt="Família viajando com tranquilidade"
@@ -111,26 +111,37 @@ export default function Why() {
                 viewport={{ once: true, amount: 0.2 }}
                 className="grid grid-cols-1 md:grid-cols-3 gap-6 xl:gap-[30px]"
               >
+                {/* Card Missão */}
                 <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
                   <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-accent transition-colors duration-300">
-                    <MdKey className="text-4xl text-accent group-hover:text-white transition-colors duration-300" />
+                    <LuTarget className="text-4xl text-accent group-hover:text-white transition-colors duration-300" />
                   </div>
-                  <h3 className="text-xl font-bold text-primary mb-4">Aluguel simples e rápido</h3>
-                  <p className="text-secondary leading-relaxed">Reserva descomplicada pelo WhatsApp e retirada ágil.</p>
+                  <h3 className="text-xl font-bold text-primary mb-4">Missão</h3>
+                  <p className="text-secondary leading-relaxed">
+                    Facilitar a mobilidade cotidiana de pessoas e empresas com automóveis modernos, atendimento acolhedor e transparência total.
+                  </p>
                 </div>
+
+                {/* Card Visão */}
                 <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
                   <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-accent transition-colors duration-300">
-                    <MdTrendingUp className="text-4xl text-accent group-hover:text-white transition-colors duration-300" />
+                    <LuEye className="text-4xl text-accent group-hover:text-white transition-colors duration-300" />
                   </div>
-                  <h3 className="text-xl font-bold text-primary mb-4">Veículos novos e revisados</h3>
-                  <p className="text-secondary leading-relaxed">Frota moderna e com manutenção em dia.</p>
+                  <h3 className="text-xl font-bold text-primary mb-4">Visão</h3>
+                  <p className="text-secondary leading-relaxed">
+                    Ser reconhecida no Bairro Amazonas e região metropolitana como a locadora parceira número um do cliente, com flexibilidade e sem burocracia.
+                  </p>
                 </div>
+
+                {/* Card Valores */}
                 <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
                   <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-accent transition-colors duration-300">
-                    <MdHandshake className="text-4xl text-accent group-hover:text-white transition-colors duration-300" />
+                    <LuShieldCheck className="text-4xl text-accent group-hover:text-white transition-colors duration-300" />
                   </div>
-                  <h3 className="text-xl font-bold text-primary mb-4">Atendimento flexível</h3>
-                  <p className="text-secondary leading-relaxed">Você fala direto com a gente, sem call center.</p>
+                  <h3 className="text-xl font-bold text-primary mb-4">Valores</h3>
+                  <p className="text-secondary leading-relaxed">
+                    Honestidade em cada contrato, valorização da comunidade regional, segurança rigorosa da frota e simplicidade no relacionamento.
+                  </p>
                 </div>
               </motion.div>
             </div>
@@ -139,7 +150,7 @@ export default function Why() {
           {/* SLIDE 2: TIMELINE COM DESTAQUE (VIBRANTE) */}
           <SwiperSlide>
             <div className="pb-20 flex flex-col items-center justify-start min-h-[600px] xl:min-h-[800px] w-full">
-              
+
               <div className="flex flex-col mb-16 xl:mb-24 w-full max-w-6xl text-center md:text-left">
                 <div className="flex flex-col md:flex-row justify-between items-center md:items-start w-full mb-8 gap-4">
                   <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-xs font-bold uppercase tracking-[0.2em]">
@@ -156,12 +167,12 @@ export default function Why() {
 
               {/* TIMELINE DESIGN REFORÇADO */}
               <div className="relative w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 md:gap-6 mt-12">
-                
+
                 {/* Linha de Conexão Vibrante (Desktop) */}
                 <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-[#FF914D]/20 via-[#FA1F1F]/40 to-[#FF914D]/20 z-0"></div>
 
                 {timelineSteps.map((step, index) => (
-                  <motion.div 
+                  <motion.div
                     key={index}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
