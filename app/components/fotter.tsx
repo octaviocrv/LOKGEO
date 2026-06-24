@@ -3,6 +3,13 @@
 import Image from 'next/image'
 import { FaWhatsapp, FaPhoneAlt, FaMapMarkerAlt } from 'react-icons/fa'
 
+const CONTACT = {
+  whatsapp: '5531995669772',
+  phones: ['+5531995669772', '+553125670069'],
+  labels: ['(31) 99566-9772', '(31) 2567-0069'],
+  address: 'Rua Japurá, 511, Contagem - MG',
+}
+
 export default function Footer() {
   const year = new Date().getFullYear()
 
@@ -53,7 +60,7 @@ export default function Footer() {
             {/* Gap reduzido (gap-3) */}
             <div className="flex flex-col gap-3 text-white/70 text-sm">
               <a
-                href="https://wa.me/5531995669772"
+                href={`https://wa.me/${CONTACT.whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 hover:text-white transition-colors group"
@@ -61,22 +68,31 @@ export default function Footer() {
                 <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-accent/20 transition-colors shrink-0">
                   <FaWhatsapp className="text-accent text-base" />
                 </div>
-                (31) 99566-9772
+                WhatsApp: {CONTACT.labels[0]}
               </a>
               <a
-                href="tel:+5531995669772"
+                href={`tel:${CONTACT.phones[0]}`}
                 className="flex items-center gap-3 hover:text-white transition-colors group"
               >
                 <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-accent/20 transition-colors shrink-0">
                   <FaPhoneAlt className="text-accent text-sm" />
                 </div>
-                Ligar agora
+                Telefone: {CONTACT.labels[0]}
+              </a>
+              <a
+                href={`tel:${CONTACT.phones[1]}`}
+                className="flex items-center gap-3 hover:text-white transition-colors group"
+              >
+                <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-accent/20 transition-colors shrink-0">
+                  <FaPhoneAlt className="text-accent text-sm" />
+                </div>
+                Telefone: {CONTACT.labels[1]}
               </a>
               <div className="flex items-start gap-3 mt-1">
                 <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0">
                   <FaMapMarkerAlt className="text-accent text-sm" />
                 </div>
-                <span className="mt-1.5 leading-relaxed">Atendimento em MG e locação para todo o Brasil</span>
+                <span className="mt-1.5 leading-relaxed">{CONTACT.address}</span>
               </div>
             </div>
           </div>

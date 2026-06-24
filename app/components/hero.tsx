@@ -151,7 +151,7 @@ export default function Hero() {
               className="inline-flex items-center gap-2 mb-8 px-5 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-[#FF914D] text-xs md:text-sm font-bold uppercase tracking-[0.2em] shadow-xl"
             >
               <FaMapMarkerAlt className="animate-bounce" />
-              Contagem & Belo Horizonte
+              Contagem
             </motion.div>
 
             <motion.h1
