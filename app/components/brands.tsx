@@ -7,12 +7,12 @@ import Image from "next/image"
 
 // Array de marcas: Facilita a manutenção e deixa o código limpo (Padrão Expert)
 const brands = [
-  { src: '/icons/brands/1.svg', alt: 'Marca 1' },
+  { src: '/icons/brands/opt/1.png', alt: 'Marca 1' },
   { src: '/icons/brands/2.svg', alt: 'Marca 2' },
-  { src: '/icons/brands/3.svg', alt: 'Marca 3' },
-  { src: '/icons/brands/4.svg', alt: 'Marca 4' },
-  { src: '/icons/brands/5.svg', alt: 'Marca 5' },
-  { src: '/icons/brands/6.svg', alt: 'Marca 6' },
+  { src: '/icons/brands/opt/3.png', alt: 'Marca 3' },
+  { src: '/icons/brands/opt/4.png', alt: 'Marca 4' },
+  { src: '/icons/brands/opt/5.png', alt: 'Marca 5' },
+  { src: '/icons/brands/opt/6.png', alt: 'Marca 6' },
 ]
 
 export default function Brands() {

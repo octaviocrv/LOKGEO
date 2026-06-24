@@ -20,21 +20,21 @@ const fleetCategories = [
   {
     category: 'Passeio & Dia a Dia',
     name: 'Compactos Econômicos',
-    image: '/images/carSlider/vw-gol-semFundo.svg',
+    image: '/images/carSlider/opt/gol.png',
     description: 'A liberdade de rodar pela cidade com máxima economia e agilidade. A escolha inteligente para o seu deslocamento diário, sem dores de cabeça com manutenção.',
     ctaText: 'Quero facilidade'
   },
   {
     category: 'Trabalho & Força',
     name: 'Picapes Leves',
-    image: '/images/carSlider/fiat-strada-semFundo.svg',
+    image: '/images/carSlider/opt/strada.png',
     description: 'A versatilidade que o seu negócio precisa. Transporte equipamentos e mercadorias com segurança, otimizando a logística da sua empresa sem imobilizar capital.',
     ctaText: 'Quero para meu negócio'
   },
   {
     category: 'Potência & Off-Road',
     name: 'Caminhonetes 4x4',
-    image: '/images/carSlider/nissas-semFundo.svg',
+    image: '/images/carSlider/opt/nissan.png',
     description: 'Robustez extrema para encarar qualquer terreno. Ideal para operações pesadas no campo, mineração ou engenharia, garantindo que o trabalho nunca pare.',
     ctaText: 'Quero potência máxima'
   },
