@@ -187,8 +187,57 @@ export default function CarSlider() {
             </div>
 
             {/* CARDS PF / PJ */}
-            <div className="flex flex-col lg:flex-row gap-6 md:gap-8 w-full">
-              
+
+            {/* Mobile: carrossel com peek */}
+            <div className="lg:hidden relative">
+              <Swiper
+                modules={[Pagination]}
+                slidesPerView={1.08}
+                spaceBetween={16}
+                pagination={{ clickable: true, dynamicBullets: true }}
+                className="pfjp-swiper !pb-12"
+              >
+                {/* Card PF */}
+                <SwiperSlide className="!h-auto">
+                  <div className='bg-[#FCF9F6] border border-[#f3ede8] rounded-3xl p-7 flex flex-col h-full'>
+                    <h3 className='text-2xl font-extrabold text-[#fa1f1f] mb-4'>Diário e Mensal Flex (PF)</h3>
+                    <p className="text-gray-600 text-base leading-relaxed flex-grow mb-5">
+                      A liberdade de ter um carro pelo tempo que precisar, sem as dores de cabeça ligadas a financiamentos, impostos (IPVA), taxas de licenciamento ou revisões mecânicas pesadas.
+                    </p>
+                    <div className="w-full h-[200px] rounded-2xl overflow-hidden">
+                      <img
+                        src="https://images.unsplash.com/photo-1632923945807-8657cb4888e4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Locação para pessoa física"
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                </SwiperSlide>
+
+                {/* Card PJ */}
+                <SwiperSlide className="!h-auto">
+                  <div className='bg-[#FCF9F6] border border-[#f3ede8] rounded-3xl p-7 flex flex-col h-full'>
+                    <h3 className='text-2xl font-extrabold text-[#fa1f1f] mb-4'>Terceirização de Frotas (PJ)</h3>
+                    <p className="text-gray-600 text-base leading-relaxed flex-grow mb-5">
+                      Aumente a liquidez da sua empresa otimizando seus ativos fixos. Deixe a logística, manutenção periódica e gestão de multas diretamente com a assessoria da LOKGEO.
+                    </p>
+                    <div className="w-full h-[200px] rounded-2xl overflow-hidden">
+                      <img
+                        src="https://images.unsplash.com/photo-1711119114815-af4822a5fa4f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Gestão de frotas para pessoa jurídica"
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                </SwiperSlide>
+              </Swiper>
+            </div>
+
+            {/* Desktop: lado a lado original preservado */}
+            <div className="hidden lg:flex flex-row gap-8 w-full">
+
               {/* Card Pessoa Física */}
               <div className='flex-1 bg-[#FCF9F6] border border-[#f3ede8] rounded-3xl p-8 sm:p-12 flex flex-col justify-center group hover:-translate-y-1 transition-all duration-300 min-h-[300px]'>
                 <div className="flex items-center mb-6">
@@ -200,7 +249,7 @@ export default function CarSlider() {
                 <div className="mt-6 w-full h-[240px] sm:h-[300px] rounded-2xl overflow-hidden">
                   <img
                     src="https://images.unsplash.com/photo-1632923945807-8657cb4888e4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="Imagem aleatória de locação para pessoa física"
+                    alt="Locação para pessoa física"
                     className="w-full h-full object-cover"
                     loading="lazy"
                   />
@@ -218,7 +267,7 @@ export default function CarSlider() {
                 <div className="mt-6 w-full h-[240px] sm:h-[300px] rounded-2xl overflow-hidden">
                   <img
                     src="https://images.unsplash.com/photo-1711119114815-af4822a5fa4f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="Imagem aleatória de gestão de frotas para pessoa jurídica"
+                    alt="Gestão de frotas para pessoa jurídica"
                     className="w-full h-full object-cover"
                     loading="lazy"
                   />
@@ -237,7 +286,22 @@ export default function CarSlider() {
       {/* ESTILIZAÇÃO DO SWIPER */}
       <style jsx global>{`
         /* ====================================
-           Paginação dos CARROS (Filho) 
+           Paginação dos cards PF/PJ (mobile)
+           ==================================== */
+        .pfjp-swiper .swiper-pagination-bullet {
+          width: 8px;
+          height: 8px;
+          background-color: #cbd5e1;
+          opacity: 1;
+        }
+        .pfjp-swiper .swiper-pagination-bullet-active {
+          background-color: #fa1f1f;
+          width: 20px;
+          border-radius: 4px;
+        }
+
+        /* ====================================
+           Paginação dos CARROS (Filho)
            ==================================== */
         .car-swiper .swiper-pagination {
           bottom: 0px !important;

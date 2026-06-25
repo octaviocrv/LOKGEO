@@ -1,17 +1,37 @@
 'use client'
 
-import React from 'react'
+import React, { useRef } from 'react'
 import Image from "next/image"
 import { motion } from 'framer-motion'
 import { fadeIn } from '../../varients'
 import { MdHandshake, MdKey, MdTrendingUp, MdArrowForward } from 'react-icons/md'
 import { LuTarget, LuEye, LuShieldCheck } from 'react-icons/lu'
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 // IMPORTAÇÕES DO SWIPER
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/effect-fade'
 import 'swiper/css/pagination'
 import { Autoplay, EffectFade, Pagination } from 'swiper/modules'
+import type { Swiper as SwiperClass } from 'swiper'
+
+const mvvCards = [
+  {
+    Icon: LuTarget,
+    title: 'Missão',
+    text: 'Facilitar a mobilidade cotidiana de pessoas e empresas com automóveis modernos, atendimento acolhedor e transparência total.',
+  },
+  {
+    Icon: LuEye,
+    title: 'Visão',
+    text: 'Ser reconhecida no Bairro Amazonas e região metropolitana como a locadora parceira número um do cliente, com flexibilidade e sem burocracia.',
+  },
+  {
+    Icon: LuShieldCheck,
+    title: 'Valores',
+    text: 'Honestidade em cada contrato, valorização da comunidade regional, segurança rigorosa da frota e simplicidade no relacionamento.',
+  },
+]
 
 const timelineSteps = [
   {
@@ -37,6 +57,9 @@ const timelineSteps = [
 ];
 
 export default function Why() {
+  const mvvSwiperRef = useRef<SwiperClass | null>(null)
+  const timelineSwiperRef = useRef<SwiperClass | null>(null)
+
   return (
     <section className="py-16 sm:py-24 xl:py-28 bg-orange-50 overflow-hidden" id="why">
       <div className="container mx-auto px-4">
@@ -109,39 +132,57 @@ export default function Why() {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.2 }}
-                className="grid grid-cols-1 md:grid-cols-3 gap-6 xl:gap-[30px]"
               >
-                {/* Card Missão */}
-                <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
-                  <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-accent transition-colors duration-300">
-                    <LuTarget className="text-4xl text-accent group-hover:text-white transition-colors duration-300" />
-                  </div>
-                  <h3 className="text-xl font-bold text-primary mb-4">Missão</h3>
-                  <p className="text-secondary leading-relaxed">
-                    Facilitar a mobilidade cotidiana de pessoas e empresas com automóveis modernos, atendimento acolhedor e transparência total.
-                  </p>
+                {/* Mobile: carrossel horizontal com peek */}
+                <div className="md:hidden relative">
+                  <Swiper
+                    onSwiper={(s) => (mvvSwiperRef.current = s)}
+                    modules={[Pagination]}
+                    slidesPerView={1.1}
+                    spaceBetween={16}
+                    pagination={{ clickable: true, dynamicBullets: true }}
+                    className="mvv-swiper !pb-12 !px-1"
+                  >
+                    {mvvCards.map(({ Icon, title, text }) => (
+                      <SwiperSlide key={title} className="!h-auto">
+                        <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-white border border-gray-100 shadow-sm h-full">
+                          <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mb-6">
+                            <Icon className="text-4xl text-accent" />
+                          </div>
+                          <h3 className="text-xl font-bold text-primary mb-4">{title}</h3>
+                          <p className="text-secondary leading-relaxed">{text}</p>
+                        </div>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                  {/* Setas mobile MVV */}
+                  <button
+                    onClick={() => mvvSwiperRef.current?.slidePrev()}
+                    aria-label="Card anterior"
+                    className="absolute left-0 top-[38%] -translate-y-1/2 z-10 w-10 h-10 rounded-full border border-gray-200 bg-white shadow flex items-center justify-center text-gray-700 active:bg-accent active:text-white transition-all"
+                  >
+                    <FiChevronLeft className="text-xl" />
+                  </button>
+                  <button
+                    onClick={() => mvvSwiperRef.current?.slideNext()}
+                    aria-label="Próximo card"
+                    className="absolute right-0 top-[38%] -translate-y-1/2 z-10 w-10 h-10 rounded-full border border-gray-200 bg-white shadow flex items-center justify-center text-gray-700 active:bg-accent active:text-white transition-all"
+                  >
+                    <FiChevronRight className="text-xl" />
+                  </button>
                 </div>
 
-                {/* Card Visão */}
-                <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
-                  <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-accent transition-colors duration-300">
-                    <LuEye className="text-4xl text-accent group-hover:text-white transition-colors duration-300" />
-                  </div>
-                  <h3 className="text-xl font-bold text-primary mb-4">Visão</h3>
-                  <p className="text-secondary leading-relaxed">
-                    Ser reconhecida no Bairro Amazonas e região metropolitana como a locadora parceira número um do cliente, com flexibilidade e sem burocracia.
-                  </p>
-                </div>
-
-                {/* Card Valores */}
-                <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
-                  <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-accent transition-colors duration-300">
-                    <LuShieldCheck className="text-4xl text-accent group-hover:text-white transition-colors duration-300" />
-                  </div>
-                  <h3 className="text-xl font-bold text-primary mb-4">Valores</h3>
-                  <p className="text-secondary leading-relaxed">
-                    Honestidade em cada contrato, valorização da comunidade regional, segurança rigorosa da frota e simplicidade no relacionamento.
-                  </p>
+                {/* Desktop: grid original preservado */}
+                <div className="hidden md:grid md:grid-cols-3 gap-6 xl:gap-[30px]">
+                  {mvvCards.map(({ Icon, title, text }) => (
+                    <div key={title} className="flex flex-col items-center text-center p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                      <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-accent transition-colors duration-300">
+                        <Icon className="text-4xl text-accent group-hover:text-white transition-colors duration-300" />
+                      </div>
+                      <h3 className="text-xl font-bold text-primary mb-4">{title}</h3>
+                      <p className="text-secondary leading-relaxed">{text}</p>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
             </div>
@@ -166,10 +207,55 @@ export default function Why() {
               </div>
 
               {/* TIMELINE DESIGN REFORÇADO */}
-              <div className="relative w-full max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 md:gap-6 mt-12">
 
-                {/* Linha de Conexão Vibrante (Desktop) */}
-                <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-[#FF914D]/20 via-[#FA1F1F]/40 to-[#FF914D]/20 z-0"></div>
+              {/* Mobile: carrossel de passos */}
+              <div className="md:hidden relative mt-8">
+                <Swiper
+                  onSwiper={(s) => (timelineSwiperRef.current = s)}
+                  modules={[Pagination]}
+                  slidesPerView={1.12}
+                  spaceBetween={16}
+                  pagination={{ clickable: true, dynamicBullets: true }}
+                  className="timeline-swiper !pb-12"
+                >
+                  {timelineSteps.map((step, index) => (
+                    <SwiperSlide key={index} className="!h-auto">
+                      <motion.div
+                        initial={{ opacity: 0, y: 16 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4 }}
+                        className="flex flex-col items-center text-center p-8 rounded-3xl bg-white border border-gray-100 shadow-sm h-full group"
+                      >
+                        <div className="w-24 h-24 rounded-[2rem] bg-white shadow-[0_12px_30px_rgba(0,0,0,0.08)] border border-gray-100 flex items-center justify-center mb-6 group-hover:bg-gradient-to-br group-hover:from-[#FF914D] group-hover:to-[#FA1F1F] transition-all duration-500">
+                          <span className="text-4xl font-black text-primary group-hover:text-white transition-colors">0{index + 1}</span>
+                        </div>
+                        <h4 className="text-2xl font-black text-primary mb-3 group-hover:text-accent transition-colors">{step.title}</h4>
+                        <div className="w-10 h-1 bg-accent/20 mb-3 rounded-full" />
+                        <p className="text-secondary text-base leading-relaxed">{step.desc}</p>
+                      </motion.div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+                <button
+                  onClick={() => timelineSwiperRef.current?.slidePrev()}
+                  aria-label="Passo anterior"
+                  className="absolute left-0 top-[36%] -translate-y-1/2 z-10 w-10 h-10 rounded-full border border-gray-200 bg-white shadow flex items-center justify-center text-gray-700 active:bg-accent active:text-white transition-all"
+                >
+                  <FiChevronLeft className="text-xl" />
+                </button>
+                <button
+                  onClick={() => timelineSwiperRef.current?.slideNext()}
+                  aria-label="Próximo passo"
+                  className="absolute right-0 top-[36%] -translate-y-1/2 z-10 w-10 h-10 rounded-full border border-gray-200 bg-white shadow flex items-center justify-center text-gray-700 active:bg-accent active:text-white transition-all"
+                >
+                  <FiChevronRight className="text-xl" />
+                </button>
+              </div>
+
+              {/* Desktop: layout horizontal original */}
+              <div className="hidden md:flex relative w-full max-w-6xl mx-auto flex-row justify-between items-start gap-6 mt-12">
+                {/* Linha de Conexão Vibrante */}
+                <div className="absolute top-12 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-[#FF914D]/20 via-[#FA1F1F]/40 to-[#FF914D]/20 z-0"></div>
 
                 {timelineSteps.map((step, index) => (
                   <motion.div
@@ -177,28 +263,17 @@ export default function Why() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.2 }}
-                    className="relative z-10 flex flex-col items-center md:items-start md:w-1/4 w-full group"
+                    className="relative z-10 flex flex-col items-start w-1/4 group"
                   >
-                    {/* Número do Passo com Destaque */}
                     <div className="relative mb-8">
                       <div className="w-24 h-24 rounded-[2rem] bg-white shadow-[0_20px_40px_rgba(0,0,0,0.08)] border border-gray-100 flex items-center justify-center transition-all duration-500 group-hover:bg-gradient-to-br group-hover:from-[#FF914D] group-hover:to-[#FA1F1F] group-hover:rotate-6 group-hover:shadow-[0_20px_40px_rgba(250,31,31,0.3)]">
                         <span className="text-4xl font-black text-primary group-hover:text-white transition-colors">0{index + 1}</span>
                       </div>
-                      {/* Seta de Conexão (Mobile) */}
-                      {index !== timelineSteps.length - 1 && (
-                        <div className="md:hidden absolute -bottom-10 left-1/2 -translate-x-1/2 text-accent/30 animate-bounce">
-                          <MdArrowForward className="text-3xl rotate-90" />
-                        </div>
-                      )}
                     </div>
-
-                    {/* Conteúdo do Card */}
-                    <div className="text-center md:text-left">
+                    <div className="text-left">
                       <h4 className="text-2xl font-black text-primary mb-4 group-hover:text-accent transition-colors">{step.title}</h4>
                       <div className="w-12 h-1 bg-accent/20 mb-4 rounded-full group-hover:w-full group-hover:bg-accent/40 transition-all duration-500" />
-                      <p className="text-secondary text-lg leading-relaxed font-medium">
-                        {step.desc}
-                      </p>
+                      <p className="text-secondary text-lg leading-relaxed font-medium">{step.desc}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -214,6 +289,26 @@ export default function Why() {
       </div>
 
       <style jsx global>{`
+        /* Paginação dots da timeline (mobile) */
+        .timeline-swiper .swiper-pagination-bullet {
+          background-color: #cbd5e1;
+          opacity: 1;
+        }
+        .timeline-swiper .swiper-pagination-bullet-active {
+          background-color: #fa1f1f;
+          width: 20px;
+          border-radius: 4px;
+        }
+        /* Paginação dots dos cards MVV (mobile) */
+        .mvv-swiper .swiper-pagination-bullet {
+          background-color: #cbd5e1;
+          opacity: 1;
+        }
+        .mvv-swiper .swiper-pagination-bullet-active {
+          background-color: #fa1f1f;
+          width: 20px;
+          border-radius: 4px;
+        }
         .why-pagination {
           display: flex;
           justify-content: center;

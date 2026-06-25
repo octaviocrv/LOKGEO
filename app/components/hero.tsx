@@ -5,6 +5,7 @@ import { SearchContext } from "../context/search"
 import { useContext, useState, useEffect } from "react"
 import { motion } from 'framer-motion'
 import { FaWhatsapp, FaCheck, FaMapMarkerAlt } from 'react-icons/fa'
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import { fadeIn } from "../../varients"
 
 // ===== DADOS DO CARROSSEL =====
@@ -118,9 +119,27 @@ export default function Hero() {
               </a>
             ))}
 
+            {/* Seta Prev — mobile/tablet */}
+            <button
+              onClick={() => setCurrentSlide(prev => prev === 0 ? carouselBanners.length - 1 : prev - 1)}
+              aria-label="Banner anterior"
+              className="xl:hidden absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/30 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white transition-all active:bg-white/20"
+            >
+              <FiChevronLeft className="text-xl" />
+            </button>
+
+            {/* Seta Next — mobile/tablet */}
+            <button
+              onClick={() => setCurrentSlide(prev => prev === carouselBanners.length - 1 ? 0 : prev + 1)}
+              aria-label="Próximo banner"
+              className="xl:hidden absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/30 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white transition-all active:bg-white/20"
+            >
+              <FiChevronRight className="text-xl" />
+            </button>
+
             {/* Controles de Navegação (Bolinhas) */}
             {carouselBanners.length > 1 && (
-              <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+              <div className="absolute bottom-6 xl:bottom-10 left-1/2 -translate-x-1/2 z-20 flex gap-2 py-2 px-3">
                 {carouselBanners.map((_, index) => (
                   <button
                     key={index}
@@ -158,7 +177,7 @@ export default function Hero() {
               variants={fadeIn('down', 0.2)}
               initial="hidden"
               whileInView="show"
-              className="text-5xl md:text-6xl xl:text-[4rem] 2xl:text-[4.5rem] font-black text-white leading-[1.1] mb-8"
+              className="text-[2.4rem] sm:text-5xl md:text-6xl xl:text-[4rem] 2xl:text-[4.5rem] font-black text-white leading-[1.1] mb-8"
             >
               Alugue com <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60">confiança,</span><br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF914D] via-[#FA1F1F] to-[#FF914D] bg-[length:200%_auto] animate-gradient-x">

@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import CountUp from "react-countup"
+import { useRef } from 'react'
 import type { CSSProperties } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { motion } from 'framer-motion'
@@ -19,7 +20,15 @@ import 'swiper/css'
 import 'swiper/css/effect-fade'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
+import type { Swiper as SwiperClass } from 'swiper'
 import { fadeIn } from '../../varients'
+
+const statsData = [
+  { Icon: MdOutlineDirectionsCar, end: 3,   label: 'Categorias',      suffix: ''  },
+  { Icon: MdOutlineCalendarMonth,  end: 3,   label: 'Anos no Mercado', suffix: '+' },
+  { Icon: MdOutlineVerifiedUser,   end: 100, label: 'Frota Revisada',  suffix: '%' },
+]
 
 const UNIT = {
   mapsQuery: 'Rua Japurá, 511, Contagem - MG',
@@ -30,6 +39,7 @@ const MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURICo
 
 const About = () => {
   const [ref, inView] = useInView({ threshold: 0.3 })
+  const statsSwiperRef = useRef<SwiperClass | null>(null)
 
   return (
     <section className="relative py-24 sm:py-32 bg-[#050810] overflow-hidden" id="about" ref={ref}>
@@ -166,23 +176,67 @@ const About = () => {
                 Escolha, alugue e dirija com total tranquilidade. Oferecemos uma experiência de alto padrão com <span className="text-white font-semibold border-b border-white/30 pb-0.5">quilometragem livre</span> e um atendimento focado em você.
               </p>
 
-              {/* Grid de Estatísticas */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-12 w-full">
-                {[
-                  { icon: MdOutlineDirectionsCar, end: 3, label: "Categorias", suffix: "" },
-                  { icon: MdOutlineCalendarMonth, end: 3, label: "Anos no Mercado", suffix: "+" },
-                  { icon: MdOutlineVerifiedUser, end: 100, label: "Frota Revisada", suffix: "%" }
-                ].map((stat, idx) => (
+              {/* Estatísticas — mobile: carrossel | desktop: grid */}
+
+              {/* Mobile */}
+              <div className="sm:hidden relative mb-12">
+                <Swiper
+                  onSwiper={(s) => (statsSwiperRef.current = s)}
+                  modules={[Pagination]}
+                  slidesPerView={1.2}
+                  spaceBetween={12}
+                  pagination={{ clickable: true, dynamicBullets: true }}
+                  className="stats-swiper !pb-10"
+                >
+                  {statsData.map((stat, idx) => (
+                    <SwiperSlide key={idx} className="!h-auto">
+                      <div className="relative group p-6 rounded-[2rem] bg-gradient-to-b from-white/[0.08] to-white/[0.02] border border-white/10 overflow-hidden">
+                        <div className="relative z-10">
+                          <div className="w-12 h-12 bg-[#FF914D]/10 rounded-2xl flex items-center justify-center mb-5">
+                            <stat.Icon className="text-2xl text-[#FF914D]" />
+                          </div>
+                          <div className="flex items-baseline gap-1 mb-1">
+                            <div className="text-4xl font-black text-white tracking-tight">
+                              {inView ? <CountUp start={0} end={stat.end} duration={2.5} delay={0.2 * idx} /> : '0'}
+                            </div>
+                            <span className="text-2xl font-bold text-[#FF914D]">{stat.suffix}</span>
+                          </div>
+                          <div className="text-xs font-bold text-gray-400 uppercase tracking-widest mt-2">
+                            {stat.label}
+                          </div>
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+                <button
+                  onClick={() => statsSwiperRef.current?.slidePrev()}
+                  aria-label="Stat anterior"
+                  className="absolute left-0 top-[38%] -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white active:bg-[#FF914D] transition-all"
+                >
+                  <FiChevronLeft className="text-xl" />
+                </button>
+                <button
+                  onClick={() => statsSwiperRef.current?.slideNext()}
+                  aria-label="Próxima stat"
+                  className="absolute right-0 top-[38%] -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white active:bg-[#FF914D] transition-all"
+                >
+                  <FiChevronRight className="text-xl" />
+                </button>
+              </div>
+
+              {/* Desktop */}
+              <div className="hidden sm:grid sm:grid-cols-3 gap-4 sm:gap-6 mb-12 w-full">
+                {statsData.map((stat, idx) => (
                   <div key={idx} className="relative group p-6 rounded-[2rem] bg-gradient-to-b from-white/[0.08] to-white/[0.02] border border-white/10 hover:border-[#FF914D]/50 transition-all duration-500 overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-b from-[#FF914D]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    
                     <div className="relative z-10">
                       <div className="w-12 h-12 bg-[#FF914D]/10 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
-                        <stat.icon className="text-2xl text-[#FF914D]" />
+                        <stat.Icon className="text-2xl text-[#FF914D]" />
                       </div>
                       <div className="flex items-baseline gap-1 mb-1">
                         <div className="text-4xl sm:text-5xl font-black text-white tracking-tight">
-                          {inView ? <CountUp start={0} end={stat.end} duration={2.5} delay={0.2 * idx} /> : "0"}
+                          {inView ? <CountUp start={0} end={stat.end} duration={2.5} delay={0.2 * idx} /> : '0'}
                         </div>
                         <span className="text-2xl font-bold text-[#FF914D]">{stat.suffix}</span>
                       </div>
@@ -215,6 +269,17 @@ const About = () => {
           </div>
         </div>
       </div>
+      <style jsx global>{`
+        .stats-swiper .swiper-pagination-bullet {
+          background-color: rgba(255, 255, 255, 0.25);
+          opacity: 1;
+        }
+        .stats-swiper .swiper-pagination-bullet-active {
+          background-color: #FF914D;
+          width: 20px;
+          border-radius: 4px;
+        }
+      `}</style>
     </section>
   )
 }

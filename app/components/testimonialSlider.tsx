@@ -10,6 +10,8 @@ import { FaQuoteLeft, FaStar } from 'react-icons/fa'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import { motion } from 'framer-motion'
 import { fadeIn } from '../../varients'
+import { useRef } from 'react'
+import type { Swiper as SwiperClass } from 'swiper'
 
 const testimonialData = [
   {
@@ -36,9 +38,11 @@ const testimonialData = [
 ]
 
 export default function TestimonialSlider() {
+  const swiperRef = useRef<SwiperClass | null>(null)
+
   return (
     <section
-      className="relative overflow-hidden bg-[#050810] pt-24 pb-32 xl:pt-32 xl:pb-40"
+      className="relative overflow-hidden bg-[#050810] pt-20 pb-20 sm:pt-24 sm:pb-32 xl:pt-32 xl:pb-40"
       id="depoimentos"
     >
       {/* Elementos de Design de Fundo */}
@@ -88,6 +92,7 @@ export default function TestimonialSlider() {
           className="relative max-w-[1000px] mx-auto"
         >
           <Swiper
+            onSwiper={(swiper) => (swiperRef.current = swiper)}
             pagination={{
               clickable: true,
               dynamicBullets: true,
@@ -154,7 +159,25 @@ export default function TestimonialSlider() {
             })}
           </Swiper>
 
-          {/* Navegação Customizada */}
+          {/* Setas mobile */}
+          <div className="flex md:hidden justify-center gap-4 mt-4">
+            <button
+              onClick={() => swiperRef.current?.slidePrev()}
+              aria-label="Depoimento anterior"
+              className="w-12 h-12 rounded-full border border-white/20 bg-white/10 flex items-center justify-center text-white active:bg-[#FF914D] active:border-[#FF914D] transition-all duration-200"
+            >
+              <FiChevronLeft className="text-2xl" />
+            </button>
+            <button
+              onClick={() => swiperRef.current?.slideNext()}
+              aria-label="Próximo depoimento"
+              className="w-12 h-12 rounded-full border border-white/20 bg-white/10 flex items-center justify-center text-white active:bg-[#FF914D] active:border-[#FF914D] transition-all duration-200"
+            >
+              <FiChevronRight className="text-2xl" />
+            </button>
+          </div>
+
+          {/* Setas desktop */}
           <div className="hidden md:block">
             <button className="testimonial-prev absolute -left-20 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-white hover:bg-[#FF914D] hover:border-[#FF914D] transition-all duration-300 z-20">
               <FiChevronLeft className="text-3xl" />
