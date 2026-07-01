@@ -1,10 +1,11 @@
 'use client'
 
 import Image from 'next/image'
-import { FaWhatsapp, FaPhoneAlt, FaMapMarkerAlt } from 'react-icons/fa'
+import { FaWhatsapp, FaPhoneAlt, FaMapMarkerAlt, FaInstagram } from 'react-icons/fa'
 
 const CONTACT = {
   whatsapp: '5531995669772',
+  instagram: 'lokgeocar',
   phones: ['+5531995669772', '+553125670069'],
   labels: ['(31) 99566-9772', '(31) 2567-0069'],
   address: 'Rua Japurá, 511, Contagem - MG',
@@ -65,6 +66,17 @@ export default function Footer() {
                   <FaWhatsapp className="text-accent text-sm" />
                 </div>
                 {CONTACT.labels[0]}
+              </a>
+              <a
+                href={`https://www.instagram.com/${CONTACT.instagram}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-white transition-colors group"
+              >
+                <div className="w-7 h-7 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-accent/20 transition-colors shrink-0">
+                  <FaInstagram className="text-accent text-sm" />
+                </div>
+                @{CONTACT.instagram}
               </a>
               <a
                 href={`tel:${CONTACT.phones[0]}`}

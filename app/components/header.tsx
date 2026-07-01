@@ -6,7 +6,7 @@ import { Link } from 'react-scroll'
 import SearchMobile from './searchMobile'
 import { useMediaQuery } from 'react-responsive'
 import { BiMenuAltRight, BiX } from 'react-icons/bi'
-import { FaWhatsapp } from 'react-icons/fa'
+import { FaWhatsapp, FaInstagram } from 'react-icons/fa'
 import { SearchContext } from '../context/search'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -82,6 +82,21 @@ export default function Header() {
 
         {/* LADO DIREITO: BOTÃO DE RESERVA PREMIUM */}
         <div className="flex items-center gap-6">
+          <a
+            href="https://www.instagram.com/lokgeocar"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram da Lokgeo"
+            className={`hidden xl:flex items-center justify-center w-11 h-11 rounded-2xl border transition-all duration-300 hover:-translate-y-1
+              ${
+                header
+                  ? 'bg-white text-gray-900 border-gray-200 hover:border-[#FF914D]'
+                  : 'bg-white/10 text-white border-white/20 backdrop-blur-md hover:bg-white/20'
+              }
+            `}
+          >
+            <FaInstagram className="text-xl" />
+          </a>
           
           <a
             href="https://wa.me/5531995669772?text=Olá,%20gostaria%20de%20solicitar%20uma%20reserva!"
@@ -153,6 +168,17 @@ export default function Header() {
               >
                 <FaWhatsapp className="text-2xl" />
                 RESERVAR AGORA
+              </a>
+
+              <a
+                href="https://www.instagram.com/lokgeocar"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full rounded-[1.25rem] py-4 border border-gray-200 text-gray-700 font-bold text-sm uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-gray-50 transition-all"
+                onClick={() => setNav(false)}
+              >
+                <FaInstagram className="text-lg" />
+                @lokgeocar
               </a>
 
               <div className="w-full">
