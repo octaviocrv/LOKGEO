@@ -5,7 +5,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-06B6D4?style=flat-square&logo=tailwindcss)](https://tailwindcss.com)
 [![License MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
-Plataforma moderna de locação de veículos em Contagem, MG. Carros, picapes e caminhonetes para pessoa física e jurídica — sem burocracia, com quilometragem livre.
+Plataforma moderna especializada em locação de veículos em Contagem, Minas Gerais, oferecendo soluções práticas e flexíveis para pessoas físicas e empresas. Disponibilizamos carros, picapes e caminhonetes para diferentes necessidades, com um processo de locação simples, seguro e sem burocracia. Conte com quilometragem livre, variedade de veículos e condições pensadas para proporcionar mais liberdade, comodidade e eficiência em cada viagem ou atividade profissional.
 
 **[Alugue agora →](https://lokgeo.vercel.app)**
 
