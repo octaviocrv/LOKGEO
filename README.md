@@ -5,7 +5,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-06B6D4?style=flat-square&logo=tailwindcss)](https://tailwindcss.com)
 [![License MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
-Plataforma moderna especializada em locação de veículos em Contagem, Minas Gerais, oferecendo soluções práticas e flexíveis para pessoas físicas e empresas. Disponibilizamos carros, picapes e caminhonetes para diferentes necessidades, com um processo de locação simples, seguro e sem burocracia. Conte com quilometragem livre, variedade de veículos e condições pensadas para proporcionar mais liberdade, comodidade e eficiência em cada viagem ou atividade profissional.
+Desenvolvi uma Landing Page moderna e responsiva para uma locadora de veículos em Contagem, MG. O projeto foi pensado para apresentar os serviços da empresa de forma clara e profissional, destacando a variedade de veículos disponíveis, incluindo carros, picapes e caminhonetes, além dos benefícios oferecidos, como locação sem burocracia e quilometragem livre. A página foi estruturada com foco em experiência do usuário, responsividade e conversão de potenciais clientes.
 
 **[Alugue agora →](https://lokgeo.vercel.app)**
 
